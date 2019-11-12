@@ -4,32 +4,20 @@ const QuizFetcher = require('../../src/QuizFetcher.js');
 describe('QuizFetcherのクラス', () => {
     describe('fetchメソッドの挙動確認', () => {
         it('fetchメソッドという名前のクラスメソッドを持つ', () => {
-            const quizfetcher = new QuizFetcher();
-            assert.strictEqual(typeof quizfetcher.fetch, 'function');
+            assert.strictEqual(typeof QuizFetcher.fetch, 'function');
         });
 
         describe('【async/await版】fetchメソッドの戻り値の型チェック', () => {
             it('resultsプロパティを持つ', async () => {
-                const quizfetcher = new QuizFetcher();
-                const response = await quizfetcher.fetch();
+                const response = await QuizFetcher.fetch();
                 const results = response.results;
 
                 assert.ok(Array.isArray(results));
-            });
 
-            it('results プロパティはは10件データをもつ配列である', async () => {
-                const quizfetcher = new QuizFetcher();
-                const response = await quizfetcher.fetch();
-                const results = response.results;
-
+                // results プロパティはは10件データをもつ配列である
                 assert.strictEqual(results.length, 10);
-            });
 
-            it('results プロパティの配列の中身は全てオブジェクトで、次のプロパティを持つ', async () => {
-                const quizfetcher = new QuizFetcher();
-                const response = await quizfetcher.fetch();
-                const results = response.results;
-
+                // results プロパティの配列の中身は全てオブジェクトで、次のプロパティを持つ
                 results.forEach((result) => {
                     assert.strictEqual(typeof result.category, 'string');
                     assert.strictEqual(typeof result.type, 'string');
