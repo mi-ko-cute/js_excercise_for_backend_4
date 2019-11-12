@@ -29,7 +29,7 @@ describe('QuizFetcherのクラス', () => {
         });
 
         it('【Promise版】fetchメソッドの戻り値の型チェック', () => {
-            QuizFetcher
+            return QuizFetcher
                 .fetch()
                 .then(response => {
                     const results = response.results;
